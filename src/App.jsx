@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+
+import { useBreweryApi } from './hooks/custom';
 import './styles/_base.scss';
 
 import Card from './components/Card';
@@ -7,33 +8,7 @@ import Loading from './components/Loading';
 
 const App = (props) => {
   const PER_PAGE = 50;
-  const [data, setData] = useState([]);
-  const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasMoreDataToLoad, setHasMoreDataToLoad] = useState(true);
-
-  useEffect(() => {
-    setIsLoading(true);
-
-    const fetchBreweryData = async () => {
-      const breweryData = await axios.get(`https://api.openbrewerydb.org/breweries?by_state=south_carolina&sort=name&per_page=${PER_PAGE}&page=${page}`, {
-        crossdomain: true
-      });
-
-      if (breweryData.data.length) {
-        setData(data.concat(breweryData.data));
-
-        if (breweryData.data.length < PER_PAGE) {
-          setHasMoreDataToLoad(false);
-        }
-      } else {
-        setData(breweryData.data);
-      }
-    }
-
-    fetchBreweryData();
-    setIsLoading(false);
-  }, [page]);
+  const [{data, page, isLoading, hasMoreDataToLoad}, setPage] = useBreweryApi(PER_PAGE);
 
   return (
     <div className="app">
