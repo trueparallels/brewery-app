@@ -1,0 +1,71 @@
+@import '../../node_modules/materialize-css/sass/materialize.scss';
+
+body {
+  @extend .grey, .lighten-3;
+  @extend .grey-text;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @extend .amber-text, .text-darken-2;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.app {
+  .title-wrapper {
+    @extend .amber, .darken-2;
+
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+
+    .app-title {
+      @extend .grey-text, .text-lighten-4;
+      font-weight: 500;
+    }
+  }
+
+  .brewery-data {
+    margin-top: 15px;
+
+    .load-more-wrapper {
+      display: flex;
+      justify-content: center;
+
+      .btn-large {
+        @extend .amber, .darken-1;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .brewery-list {
+    width: 95%;
+    margin: 0 auto;
+
+    li {
+      .card {
+        padding: 10px;
+      }
+      h4 {
+        font-weight: 500;
+      }
+
+      margin-bottom: 10px;
+
+      .brewery-location {
+        margin-top: 5px;
+
+        .material-icons {
+          vertical-align: middle;
+        }
+        span {
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}
