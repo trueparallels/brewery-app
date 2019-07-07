@@ -1,29 +1,30 @@
 @import '../../node_modules/materialize-css/sass/materialize.scss';
+@import './colors';
 
 body {
-  @extend .grey, .lighten-3;
-  @extend .grey-text;
+  background-color: $grey-lighten-3;
+  color: $grey;
   margin: 0;
   width: 100vw;
   height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @extend .amber-text, .text-darken-2;
+  color: $amber-darken-2;
   margin-top: 0;
   margin-bottom: 0;
 }
 
 .app {
   .title-wrapper {
-    @extend .amber, .darken-2;
+    background-color: $amber-darken-2;
 
     display: flex;
     justify-content: center;
     padding: 10px;
 
     .app-title {
-      @extend .grey-text, .text-lighten-4;
+      color: $grey-lighten-4;
       font-weight: 500;
     }
   }
@@ -61,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
       justify-content: center;
 
       .btn-large {
-        @extend .amber, .darken-1;
+        background-color: $amber-darken-1;
         margin-bottom: 20px;
       }
     }
