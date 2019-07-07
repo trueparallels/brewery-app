@@ -40,7 +40,7 @@ const App = (props) => {
       <div className="title-wrapper">
         <h2 className="app-title">Breweries of South Carolina 🍻</h2>
       </div>
-      { isLoading ? (<Loading />) : 
+      { isLoading || !data.length ? (<Loading />) : 
         <div className="brewery-data">
           <ul className="brewery-list">
             { !!data.length &&
