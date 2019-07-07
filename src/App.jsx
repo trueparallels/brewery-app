@@ -3,6 +3,7 @@ import axios from 'axios';
 import './styles/_base.scss';
 
 import Card from './components/Card';
+import Loading from './components/Loading';
 
 const App = (props) => {
   const PER_PAGE = 50;
@@ -39,10 +40,10 @@ const App = (props) => {
       <div className="title-wrapper">
         <h2 className="app-title">Breweries of South Carolina 🍻</h2>
       </div>
-      { isLoading ? (<span>Loading...</span>) : 
+      { isLoading ? (<Loading />) : 
         <div className="brewery-data">
           <ul className="brewery-list">
-            { data.length &&
+            { !!data.length &&
               data.map(loc => (
                 <Card key={loc.id} location={loc} />
               ))
