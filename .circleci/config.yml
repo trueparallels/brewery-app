@@ -34,5 +34,31 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
-          name: build-production-site
+          name: Build site for production
           command: 'npm run build'
+
+  deploy:
+    docker:
+      - image: circleci/python:3.7-stretch
+    
+    working_directory: ~/repo
+    
+    steps:
+      - run:
+          name: Install AWS CLI
+          command: sudo pip install awscli
+      - run:
+          name: Deploy to S3
+          command: aws s3 sync dist s3://brewery-app-kyle/ --delete
+
+workflows:
+    version: 2
+    production-deploy:
+      jobs:
+        - build
+        - deploy:
+            requires:
+              - build
+            filters:
+              branches:
+                only: master
