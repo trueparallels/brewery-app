@@ -1,5 +1,6 @@
 @import '../../node_modules/materialize-css/sass/materialize.scss';
 @import './colors';
+@import './pattern';
 
 * {
   box-sizing: border-box;
@@ -19,7 +20,17 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0;
 }
 
+.dropdown-content {
+  li {
+    span {
+      color: $blue;
+    }
+  }
+}
+
 .app {
+  @extend .pattern;
+
   .title-wrapper {
     background-color: $amber-darken-2;
 

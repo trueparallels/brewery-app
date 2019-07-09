@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import M from 'materialize-css';
 
 import { getRegions, presentableStateName } from '../utils';
 
 const Filters = (props) => {
   const regions = getRegions();
+  const [selectedState, setSelectedState] = useState('south_carolina');
 
   useEffect(() => {
     M.AutoInit();
-  }, [])
+  }, []);
 
   return (
     <div className="filters">
       <h5>Filters</h5>
 
       <div className="input-field">  
-        <select className="states">
+        <select className="states" defaultValue={selectedState}>
           {
             regions.map((item) => (
               <option key={item} value={item}>{ presentableStateName(item) }</option>
