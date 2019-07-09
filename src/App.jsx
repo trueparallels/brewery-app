@@ -13,7 +13,7 @@ const App = (props) => {
   return (
     <div className="app">
       <div className="title-wrapper">
-        <h2 className="app-title">Breweries of South Carolina 🍻</h2>
+        <h2 className="app-title">Breweries 🍻</h2>
       </div>
       { isLoading || !data.length ? (<Loading />) : 
         <div className="brewery-data">

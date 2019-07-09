@@ -6,12 +6,13 @@ export function useBreweryApi(perPage) {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [hasMoreDataToLoad, setHasMoreDataToLoad] = useState(true);
-
+  
   useEffect(() => {
+    const API_URL_TEMPLATE = `https://api.openbrewerydb.org/breweries?by_state=south_carolina&sort=name&per_page=${perPage}&page=${page}`
     setIsLoading(true);
 
     const fetchBreweryData = async () => {
-      const breweryData = await axios.get(`https://api.openbrewerydb.org/breweries?by_state=south_carolina&sort=name&per_page=${perPage}&page=${page}`, {
+      const breweryData = await axios.get(API_URL_TEMPLATE, {
         crossdomain: true
       });
 
