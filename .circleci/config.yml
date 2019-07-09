@@ -39,6 +39,8 @@ jobs:
 
       - persist_to_workspace:
           root: ~/repo
+          paths:
+            - dist
 
   deploy:
     docker:
