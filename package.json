@@ -11,12 +11,14 @@
     "react-dom": "^16.8.6"
   },
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "browserslist": [
     "since 2017-06"
   ],
   "devDependencies": {
+    "parcel-bundler": "^1.12.3",
     "sass": "^1.22.3"
   }
 }
