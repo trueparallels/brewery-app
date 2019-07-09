@@ -34,5 +34,5 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
-        name: build-production-site
-        command: 'parcel build'
+          name: build-production-site
+          command: 'npm run build'
