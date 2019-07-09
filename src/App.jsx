@@ -4,6 +4,7 @@ import { useBreweryApi } from './hooks/custom';
 import './styles/_base.scss';
 
 import Card from './components/Card';
+import Filters from './components/Filters';
 import Loading from './components/Loading';
 
 const App = (props) => {
@@ -15,6 +16,7 @@ const App = (props) => {
       <div className="title-wrapper">
         <h2 className="app-title">Breweries 🍻</h2>
       </div>
+      <Filters />
       { isLoading || !data.length ? (<Loading />) : 
         <div className="brewery-data">
           <ul className="brewery-list">
