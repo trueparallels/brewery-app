@@ -77,7 +77,8 @@ h1, h2, h3, h4, h5, h6 {
       justify-content: center;
 
       .btn-large {
-        background-color: $amber-darken-1;
+        color: $amber-darken-1;
+        background-color: white;
         margin-bottom: 20px;
       }
     }
@@ -94,7 +95,7 @@ h1, h2, h3, h4, h5, h6 {
 
     li {
       .card {
-        padding: 10px;
+        padding: 15px;
       }
       h4 {
         font-weight: 500;
