@@ -12,6 +12,7 @@ body {
   margin: 0;
   width: 100vw;
   height: 100vh;
+  min-width: 375px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -82,6 +83,12 @@ h1, h2, h3, h4, h5, h6 {
         margin-bottom: 20px;
       }
     }
+
+    @media screen and (max-width: 725px) {
+      .brewery-name {
+        text-align: center;
+      }
+    }
   }
 
   .filters {
@@ -107,6 +114,10 @@ h1, h2, h3, h4, h5, h6 {
         display: flex;
         margin-top: 5px;
 
+        @media screen and (max-width: 725px) {
+          justify-content: center;
+        }
+
         div {
           margin-right: 20px;
 
@@ -130,6 +141,7 @@ h1, h2, h3, h4, h5, h6 {
 
       .brewery-additional-data {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
 
         .data-left {
@@ -138,6 +150,20 @@ h1, h2, h3, h4, h5, h6 {
           justify-content: center;
 
           min-height: 300px;
+          min-width: 305px;
+        }
+
+        @media screen and (max-width: 725px) {
+          justify-content: center;
+          flex-direction: column;
+
+          .brewery-address {
+            display: flex;
+            justify-content: center;
+          }
+          .data-left {
+            min-height: 200px;
+          }
         }
 
         .brewery-address {

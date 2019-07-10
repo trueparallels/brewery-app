@@ -23,10 +23,12 @@ const Card = (props) => {
         <div className="brewery-additional-data">
           <div className="data-left">
             <div className="brewery-address">
-              <p>{ location.street }</p>
-              <p>{ `${location.city}, ${location.state}  ${location.postal_code}` }</p>
-              <p>{ location.phone }</p>
-              <p><a href={location.website_url}>{location.website_url}</a></p>
+              <div className="address-wrapper">
+                <p>{ location.street }</p>
+                <p>{ `${location.city}, ${location.state}  ${location.postal_code}` }</p>
+                <p>{ location.phone }</p>
+                <p><a href={location.website_url}>{location.website_url}</a></p>
+              </div>
             </div>
           </div>
           <div className="data-right">
