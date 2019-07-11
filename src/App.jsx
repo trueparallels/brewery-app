@@ -10,12 +10,12 @@ import Loading from './components/Loading';
 const initialState = {
   filter: 'south_carolina',
   page: 1,
-  data: []
+  data: [],
+  perPage: 50
 }
 
 const App = (props) => {
-  const PER_PAGE = 50;
-  const [{state, isLoading, hasMoreDataToLoad}, dispatch] = useBreweryApi(PER_PAGE, initialState);
+  const [{state, isLoading, hasMoreDataToLoad}, dispatch] = useBreweryApi(initialState);
   const { data } = state;
 
   const handleLoadMore = (event) => {

@@ -3,11 +3,11 @@ import axios from 'axios';
 
 import reducer from '../reducer';
 
-export function useBreweryApi(perPage, initialState) {
+export function useBreweryApi(initialState) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasMoreDataToLoad, setHasMoreDataToLoad] = useState(true);
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { filter, page, data } = state;
+  const { filter, page, data, perPage } = state;
 
   const setData = (data) => {
     dispatch({type: 'UPDATE_DATA', payload: { data: data }});
