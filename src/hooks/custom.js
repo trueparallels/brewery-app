@@ -1,15 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 import axios from 'axios';
 
-export function useBreweryApi(perPage) {
-  const [data, setData] = useState([]);
-  const [page, setPage] = useState(1);
+import reducer from '../reducer';
+
+export function useBreweryApi(perPage, initialState) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasMoreDataToLoad, setHasMoreDataToLoad] = useState(true);
-  
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { filter, page, data } = state;
+
+  const setData = (data) => {
+    dispatch({type: 'UPDATE_DATA', payload: { data: data }});
+  }
+
   useEffect(() => {
-    const API_URL_TEMPLATE = `https://api.openbrewerydb.org/breweries?by_state=south_carolina&sort=name&per_page=${perPage}&page=${page}`
+    const API_URL_TEMPLATE = `https://api.openbrewerydb.org/breweries?by_state=${filter}&sort=name&per_page=${perPage}&page=${page}`
     setIsLoading(true);
+    setHasMoreDataToLoad(true);
 
     const fetchBreweryData = async () => {
       const breweryData = await axios.get(API_URL_TEMPLATE, {
@@ -29,7 +36,7 @@ export function useBreweryApi(perPage) {
 
     fetchBreweryData();
     setIsLoading(false);
-  }, [page]);
+  }, [page, filter]);
 
-  return [{data, page, isLoading, hasMoreDataToLoad}, setPage];
+  return [{state, isLoading, hasMoreDataToLoad}, dispatch];
 };

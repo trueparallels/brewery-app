@@ -20,7 +20,7 @@ const Card = (props) => {
             <span>{ toTitleCase(location.brewery_type) }</span>
           </div>
         </div>
-        <div className="brewery-additional-data">
+        <div className="brewery-additional-data hide">
           <div className="data-left">
             <div className="brewery-address">
               <div className="address-wrapper">
