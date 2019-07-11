@@ -133,7 +133,10 @@ h1, h2, h3, h4, h5, h6 {
         }
 
         .brewery-location, .brewery-type {
-          min-width: 180px;
+          @media screen and (min-width: 725px) {
+            min-width: 200px;
+          }
+
           span {
             line-height: 24px;
           }
