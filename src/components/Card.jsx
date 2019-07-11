@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { toTitleCase } from '../utils';
 
 import LocationMap from './LocationMap';
 
 const Card = (props) => {
   const { location } = props;
+  const [showDetails, setShowDetails] = useState(false);
+
+  const handleClick = () => { setShowDetails(!showDetails); };
 
   return (
     <li className="brewery">
-      <div className="card hoverable">
+      <div className="card hoverable" onClick={handleClick}>
         <h4 className="brewery-name">{location.name}</h4>
         <div className="brewery-basic-info">
           <div className="brewery-location">
@@ -20,7 +23,7 @@ const Card = (props) => {
             <span>{ toTitleCase(location.brewery_type) }</span>
           </div>
         </div>
-        <div className="brewery-additional-data hide">
+        <div className={`brewery-additional-data ${showDetails ? '' : 'hide'}`}>
           <div className="data-left">
             <div className="brewery-address">
               <div className="address-wrapper">
