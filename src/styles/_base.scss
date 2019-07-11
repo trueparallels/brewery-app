@@ -30,6 +30,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .app {
+  min-height: 100vh;
   @extend .pattern;
 
   .title-wrapper {
@@ -94,6 +95,10 @@ h1, h2, h3, h4, h5, h6 {
   .filters {
     width: 95%;
     margin: 0 auto;
+
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
   }
 
   .brewery-list {
@@ -127,6 +132,7 @@ h1, h2, h3, h4, h5, h6 {
         }
 
         .brewery-location, .brewery-type {
+          min-width: 180px;
           span {
             line-height: 24px;
           }
