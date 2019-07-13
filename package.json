@@ -8,7 +8,8 @@
     "materialize-css": "^1.0.0-rc.2",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-lazy": "^1.1.0"
   },
   "scripts": {
     "start": "parcel index.html",

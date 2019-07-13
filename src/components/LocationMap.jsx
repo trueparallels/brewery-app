@@ -1,4 +1,6 @@
 import React from 'react';
+import { Lazy } from 'react-lazy';
+
 import { presentableBreweryName } from './../utils';
 
 const encodeLocationForMapsRequest = (location) => {
@@ -31,11 +33,13 @@ const LocationMap = (props) => {
   const url = `https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${place}&zoom=18&maptype=roadmap`;
 
   return (
-    <iframe 
-      style={{ width: '100%', height: '300px'}}
-      src={url}
-      frameBorder="0"
-      allowFullScreen></iframe>
+    <Lazy component="div">
+      <iframe 
+        style={{ width: '100%', height: '300px'}}
+        src={url}
+        frameBorder="0"
+        allowFullScreen></iframe>
+    </Lazy>
   );
 };
 
