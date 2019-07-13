@@ -1,10 +1,34 @@
 import React from 'react';
+import { presentableBreweryName } from './../utils';
+
+const encodeLocationForMapsRequest = (location) => {
+  const {name , street, city, state, latitude, longitude } = location;
+
+  if (street && street != '') {
+    return encodeURIComponent(`${presentableBreweryName(name)}, ${street}, ${city}, ${state}`);
+  }
+  
+  if (latitude && longitude) {
+    return encodeURIComponent(`${latitude},${$longitude}`);
+  }
+
+  return null;
+};
 
 const LocationMap = (props) => {
-  const API_KEY = '***REMOVED***';
-  const { latitude, longitude } = props;
+  const API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+  const { location } = props;
+  const place = encodeLocationForMapsRequest(location);
 
-  const url = `https://www.google.com/maps/embed/v1/view?key=${API_KEY}&center=${latitude},${longitude}&zoom=18&maptype=roadmap`;
+  if (!place) {
+    return (
+      <div>
+        <span>Sorry, no map available yet!</span>
+      </div>
+    );
+  }
+
+  const url = `https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${place}&zoom=18&maptype=roadmap`;
 
   return (
     <iframe 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { toTitleCase } from '../utils';
+import { toTitleCase, presentableBreweryName } from '../utils';
 
 import LocationMap from './LocationMap';
 
@@ -12,7 +12,7 @@ const Card = (props) => {
   return (
     <li className="brewery">
       <div className="card hoverable" onClick={handleClick}>
-        <h4 className="brewery-name">{location.name}</h4>
+        <h4 className="brewery-name">{presentableBreweryName(location.name)}</h4>
         <div className="brewery-basic-info">
           <div className="brewery-location">
             <i className="material-icons">place</i>
@@ -35,10 +35,7 @@ const Card = (props) => {
             </div>
           </div>
           <div className="data-right">
-            {
-              location.latitude && location.longitude &&
-                (<LocationMap latitude={location.latitude} longitude={location.longitude} />)
-            }
+            <LocationMap location={location} />
           </div>
         </div>
       </div>

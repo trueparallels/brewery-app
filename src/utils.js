@@ -8,7 +8,8 @@ import {
   tail,
   concat,
   converge,
-  map
+  map,
+  replace
 } from 'ramda';
 
 export function toTitleCase(input) {
@@ -17,6 +18,10 @@ export function toTitleCase(input) {
 
   return converge(concat, [firstCharToUpper, restOfStringToLower])(input)
 };
+
+export function presentableBreweryName(input) {
+  return replace(/[^a-zA-Z0-9,' \-\/]*/g, '', input);
+}
 
 export function presentableStateName(input) {
   const splitIntoWords = split('_');
