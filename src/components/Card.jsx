@@ -25,6 +25,9 @@ const Card = (props) => {
         </div>
         <div className={`brewery-additional-data ${showDetails ? '' : 'hide'}`}>
           <div className="data-left">
+            <LocationMap location={location} />
+          </div>
+          <div className="data-right">
             <div className="brewery-address">
               <div className="address-wrapper">
                 <p>{ location.street }</p>
@@ -33,9 +36,6 @@ const Card = (props) => {
                 <p><a href={location.website_url}>{location.website_url}</a></p>
               </div>
             </div>
-          </div>
-          <div className="data-right">
-            <LocationMap location={location} />
           </div>
         </div>
       </div>
