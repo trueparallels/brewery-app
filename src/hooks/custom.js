@@ -1,12 +1,13 @@
 import { useState, useEffect, useReducer } from 'react';
 import axios from 'axios';
 
-import reducer from '../reducer';
+import breweryReducer from '../reducers/breweryReducer';
+import likesReducer from '../reducers/likesReducer';
 
 export function useBreweryApi(initialState) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasMoreDataToLoad, setHasMoreDataToLoad] = useState(true);
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(breweryReducer, initialState);
   const { filter, page, data, perPage } = state;
 
   const setData = (data) => {
@@ -40,3 +41,18 @@ export function useBreweryApi(initialState) {
 
   return [{state, isLoading, hasMoreDataToLoad}, dispatch];
 };
+
+export function useLikesApi({ verb = 'get', breweryId }) {
+  const [state, dispatch] = useReducer(likesReducer, { likes: 0 });
+  const API_URL_TEMPLATE = `${process.env.LIKES_API_BASE_URL}/likes/${breweryId}`;
+
+  const makeRequest = async () => {
+    const likesData = await axios[verb](API_URL_TEMPLATE, {
+      crossdomain: true
+    });
+
+    dispatch({ type: 'FETCH_SUCCESS', payload: { data: likesData}});
+  };
+
+  return [state, makeRequest];
+}

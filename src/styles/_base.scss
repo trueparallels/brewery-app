@@ -110,8 +110,37 @@ h1, h2, h3, h4, h5, h6 {
         padding: 15px;
         cursor: pointer;
       }
-      h4 {
-        font-weight: 500;
+
+      .brewery-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        .brewery-likes {
+          margin-right: 5px;
+          vertical-align: 30%;
+        }
+
+        .favorite-marker {
+          font-size: 2em;
+          color: $red-darken-1;
+
+          &.not-filled {
+            color: $grey;
+          }
+        }
+
+        h4 {
+          font-weight: 500;
+        }
+      }
+
+      @media screen and (max-width: 900px) {
+        .brewery-top {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
       }
 
       margin-bottom: 10px;

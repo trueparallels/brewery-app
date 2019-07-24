@@ -34,7 +34,7 @@ const App = (props) => {
           <ul className="brewery-list">
             { !!data.length &&
               data.map(loc => (
-                <Card key={loc.id} location={loc} />
+                <Card key={loc.id} breweryId={loc.id} location={loc} />
               ))
             }
           </ul>
