@@ -1,17 +1,18 @@
 import React from 'react';
 import { Lazy } from 'react-lazy';
+import PropTypes from 'prop-types';
 
-import { presentableBreweryName } from './../utils';
+import { presentableBreweryName } from '../utils';
 
 const encodeLocationForMapsRequest = (location) => {
-  const {name , street, city, state, latitude, longitude } = location;
+  const { name, street, city, state, latitude, longitude } = location;
 
-  if (street && street != '') {
+  if (street && street !== '') {
     return encodeURIComponent(`${presentableBreweryName(name)}, ${street}, ${city}, ${state}`);
   }
   
   if (latitude && longitude) {
-    return encodeURIComponent(`${latitude},${$longitude}`);
+    return encodeURIComponent(`${latitude},${longitude}`);
   }
 
   return null;
@@ -34,7 +35,8 @@ const LocationMap = (props) => {
 
   return (
     <Lazy component="div">
-      <iframe 
+      <iframe
+        title="map"
         style={{ width: '100%', height: '300px'}}
         src={url}
         frameBorder="0"
@@ -42,5 +44,16 @@ const LocationMap = (props) => {
     </Lazy>
   );
 };
+
+LocationMap.propTypes = {
+  location: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    street: PropTypes.string,
+    city: PropTypes.string,
+    state: PropTypes.string,
+    latitude: PropTypes.string,
+    longitude: PropTypes.string,
+  }).isRequired,
+}
 
 export default LocationMap;

@@ -8,20 +8,22 @@ export function useBreweryApi(initialState) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasMoreDataToLoad, setHasMoreDataToLoad] = useState(true);
   const [state, dispatch] = useReducer(breweryReducer, initialState);
-  const { filter, page, data, perPage } = state;
+  const {
+    filter, page, data, perPage,
+  } = state;
 
-  const setData = (data) => {
-    dispatch({type: 'UPDATE_DATA', payload: { data: data }});
-  }
+  const setData = (payloadData) => {
+    dispatch({ type: 'UPDATE_DATA', payload: { data: payloadData } });
+  };
 
   useEffect(() => {
-    const API_URL_TEMPLATE = `https://api.openbrewerydb.org/breweries?by_state=${filter}&sort=name&per_page=${perPage}&page=${page}`
+    const API_URL_TEMPLATE = `https://api.openbrewerydb.org/breweries?by_state=${filter}&sort=name&per_page=${perPage}&page=${page}`;
     setIsLoading(true);
     setHasMoreDataToLoad(true);
 
     const fetchBreweryData = async () => {
       const breweryData = await axios.get(API_URL_TEMPLATE, {
-        crossdomain: true
+        crossdomain: true,
       });
 
       if (breweryData.data.length) {
@@ -33,14 +35,14 @@ export function useBreweryApi(initialState) {
       } else {
         setData(breweryData.data);
       }
-    }
+    };
 
     fetchBreweryData();
     setIsLoading(false);
   }, [page, filter]);
 
-  return [{state, isLoading, hasMoreDataToLoad}, dispatch];
-};
+  return [{ state, isLoading, hasMoreDataToLoad }, dispatch];
+}
 
 export function useLikesApi({ verb = 'get', breweryId }) {
   const [state, dispatch] = useReducer(likesReducer, { likes: 0 });
@@ -48,10 +50,10 @@ export function useLikesApi({ verb = 'get', breweryId }) {
 
   const makeRequest = async () => {
     const likesData = await axios[verb](API_URL_TEMPLATE, {
-      crossdomain: true
+      crossdomain: true,
     });
 
-    dispatch({ type: 'FETCH_SUCCESS', payload: { data: likesData}});
+    dispatch({ type: 'FETCH_SUCCESS', payload: { data: likesData } });
   };
 
   return [state, makeRequest];

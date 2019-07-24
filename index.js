@@ -4,4 +4,4 @@ import App from './src/App';
 
 const app = <App />;
 
-ReactDOM.render(app, document.getElementById('root'))
+ReactDOM.render(app, document.getElementById('root'));

@@ -1,24 +1,25 @@
 export default function reducer(state, action) {
+  const { data } = action.payload;
+
   switch (action.type) {
     case 'STATE_FILTER_CHANGE':
       return {
         ...state,
         filter: action.payload.filter,
         page: 1,
-        data: []
+        data: [],
       };
     case 'LOAD_MORE':
       return {
         ...state,
-        page: state.page + 1
+        page: state.page + 1,
       };
     case 'UPDATE_DATA':
-      const { data } = action.payload;
       return {
         ...state,
-        data: data
+        data,
       };
     default:
       return state;
   }
-};
+}
